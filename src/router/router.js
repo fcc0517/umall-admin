@@ -1,0 +1,83 @@
+const routes = [
+    {
+        path:'/',
+        // 路由重定向，默认显示主页面视图
+        redirect:'/statistics',
+        // 采用懒加载的形式
+        component:()=> import('@/pages/main/Index'),
+        children:[
+            {
+                path:'statistics',
+                component:()=>import('@/pages/statistics/Index'),
+                meta:{
+                    title:'图表统计'
+                }
+            },
+            {
+                path:'menu',
+                component:()=>import('@/pages/menu/Index'),
+                meta:{
+                    title:'菜单管理'
+                }
+            },
+            {
+                path:'banner',
+                component:()=>import('@/pages/banner/Index'),
+                meta:{
+                    title:'轮播图'
+                }
+            },
+            {
+                path:'category',
+                component:()=>import('@/pages/category/Index'),
+                meta:{
+                    title:'商品分类'
+                }
+            },
+            {
+                path:'goods',
+                component:()=>import('@/pages/goods/Index'),
+                meta:{
+                    title:'菜单管理'
+                }
+            },
+            {
+                path:'role',
+                component:()=>import('@/pages/role/Index'),
+                meta:{
+                    title:'角色管理'
+                }
+            },
+            {
+                path:'seckill',
+                component:()=>import('@/pages/seckill/Index'),
+                meta:{
+                    title:'限时秒杀'
+                }
+            },
+            {
+                path:'specs',
+                component:()=>import('@/pages/specs/Index'),
+                meta:{
+                    title:'商品规格'
+                }
+            },
+            {
+                path:'user',
+                component:()=>import('@/pages/user/Index'),
+                meta:{
+                    title:'管理员管理'
+                }
+            }
+        ]
+    },
+    {
+        path:'/login',
+        component:()=>import('@/pages/login/Index'),
+        meta:{
+            title:'登录'
+        }
+    }
+]
+
+export default routes
