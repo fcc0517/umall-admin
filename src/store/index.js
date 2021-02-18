@@ -7,6 +7,8 @@ import user from './modules/user'
 import category from './modules/category'
 import specs from './modules/specs'
 import goods from './modules/goods'
+import banner from './modules/banner'
+import seckill from './modules/seckill'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -18,7 +20,9 @@ const store = new Vuex.Store({
         user,
         category,
         specs,
-        goods
+        goods,
+        banner,
+        seckill
       }
 })
 

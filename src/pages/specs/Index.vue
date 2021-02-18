@@ -6,7 +6,6 @@
    </div>
 </template>
  
-
 <script>
 import UList from './components/List'
 import UForm from './components/Form'
@@ -22,7 +21,7 @@ export default {
          this.$refs.form.title = '添加规格'
       },
       showEditForm(data){
-         console.log(data);
+         // console.log(data);
          // 先显示对话框
          this.$refs.form.dialogFormVisible = true
          // 修改对话框的标题，显示为修改菜单，因为用的是同一个组件
