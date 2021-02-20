@@ -16,7 +16,11 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
+
+# 运行步骤，需要先运行umall-api文件，获取接口文件
+npm run start
 ```
+
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
