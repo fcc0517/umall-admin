@@ -11,23 +11,59 @@ const Db = require("../utils/Db");
 const { getTree,getUUID } = require("../utils");
 //获取商品总数
 router.get("/goodscount",async(req,res)=>{
-    let data = await Db.select(req, `SELECT COUNT(*) AS total FROM ${tableName}`);
+	const { fid,sid,keyword } = req['query'];
+	let sql = `SELECT COUNT(*) AS total FROM ${tableName}`;
+	if(fid && sid){
+    	sql += ` WHERE first_cateid=${fid} AND second_cateid = ${sid}`
+    }
+    if(keyword){
+    	if (sql.includes('WHERE')) {
+    		sql += ` AND goodsname LIKE '%${keyword}%'`
+    	} else {
+    		sql += ` WHERE goodsname LIKE '%${keyword}%'`
+    	}
+    }
+    let data = await Db.select(req, sql);
     res.send(Success(data));
 });
 //商品列表
 router.get("/goodslist", async (req, res) => {
-    const { size,page,fid,sid } = req['query'];
+    const { size,page,fid,sid, isnew, ishot,keyword } = req['query'];
     let sql = `SELECT a.*,b.catename firstcatename,c.catename secondcatename FROM ${tableName} a
         LEFT JOIN ${tableNameCate} b
         ON a.first_cateid = b.id
         LEFT JOIN ${tableNameCate} c
         ON a.second_cateid = c.id`
-    if(size && page){
-    	sql += ` LIMIT ${(page-1)*size},${size}`;
-    }
     if(fid && sid){
     	sql += ` WHERE a.first_cateid=${fid} AND a.second_cateid = ${sid}`
     }
+    if(keyword){
+    	if (sql.includes('WHERE')) {
+    		sql += ` AND a.goodsname LIKE '%${keyword}%'`
+    	} else {
+    		sql += ` WHERE a.goodsname LIKE '%${keyword}%'`
+    	}
+    }
+    if (isnew == 1) {
+    	if (sql.includes('WHERE')) {
+    		sql += ` AND a.isnew=1`
+    	} else {
+    		sql += ` WHERE a.isnew=1`
+    	}
+    }
+
+    if (ishot == 1) {
+    	if (sql.includes('WHERE')) {
+    		sql += ` AND a.ishot=1`
+    	} else {
+    		sql += ` WHERE a.ishot=1`
+    	}
+    }
+
+    if(size && page){
+    	sql += ` LIMIT ${(page-1)*size},${size}`;
+    }
+    
     let data = await Db.select(req,sql);
     res.send(Success(data));
 });
