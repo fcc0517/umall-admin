@@ -27,7 +27,6 @@
           range-separator="至"
           start-placeholder="开始日期"
           end-placeholder="结束日期"
-          :default-time="['00:00:00','23:59:59']"
           @change="changeTime"
         >
         </el-date-picker>
@@ -219,17 +218,18 @@ export default {
     },
     // 修改时设置表单的数据
     setFormData(data) {
+      console.log(data);
       // console.log(data.begintime, data.endtime);
       let begin = parseFloat(data.begintime);
       let end = parseFloat(data.endtime);
       // console.log(begin, end);
       this.form = { ...data }; //复制一份数据
-      begin = new Date(begin).toLocaleString();
-      end = new Date(end).toLocaleString();
+      // begin = new Date(begin).toLocaleString();
+      // end = new Date(end).toLocaleString();
       // console.log(begin, end);
       this.createTime.push(begin);
       this.createTime.push(end);
-      console.log(this.createTime);
+      // console.log(this.createTime);
       // 根据商品的一级分类设置二级分类的数据
       const category = this.categoryList.find(
         item => item.id === data.first_cateid
@@ -250,7 +250,7 @@ export default {
           } else {
             // 添加
             this.editBanner();
-            console.log(this.form);
+            // console.log(this.form);
           }
         }
       });

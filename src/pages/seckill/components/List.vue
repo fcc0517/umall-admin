@@ -48,6 +48,7 @@ export default {
     onEdit(data) {
       this.$emit("edit", data);
     },
+    // 删除
     onDelete(data) {
       // console.log(data);
       // $comfirm是elementui的弹出框组件(显示的信息，标题，其他的配置项)

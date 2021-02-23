@@ -26,7 +26,7 @@ export default {
          // 先显示对话框
          this.$refs.form.dialogFormVisible = true
          // 修改对话框的标题，显示为修改菜单，因为用的是同一个组件
-         this.$refs.form.title = '修改'
+         this.$refs.form.title = '修改轮播图'
          // console.log(this.$refs.form);
          this.$refs.form.setFormData(data)
       }

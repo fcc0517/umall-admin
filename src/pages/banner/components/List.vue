@@ -30,10 +30,7 @@
             ><i class="el-icon-edit"></i> 编辑</el-button
           >
           <!-- ID为1的时候不允许删除 -->
-          <el-button
-            type="danger"
-            size="mini"
-            @click="onDelete(props.row)"
+          <el-button type="danger" size="mini" @click="onDelete(props.row)"
             ><i class="el-icon-edit"></i>删除</el-button
           >
         </template>
@@ -59,6 +56,7 @@ export default {
   methods: {
     // 编辑
     onEdit(data) {
+      // 通知父组件显示编辑菜单的对话框, 把当前编辑的数据传递过去
       this.$emit("edit", data);
     },
     onDelete(data) {

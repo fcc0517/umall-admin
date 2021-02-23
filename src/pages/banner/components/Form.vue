@@ -81,7 +81,7 @@
         <el-image
           style="width: 148px; height: 148px"
           fit="fill"
-          :src="editDefaultImg | recombinationImg"
+          :src="editDefaultImg | recombination"
         />
       </el-form-item>
       <el-form-item label="状态">
@@ -180,10 +180,8 @@ export default {
     },
     // 修改时设置表单的数据
     setFormData(data) {
-      if (data.attrs !== "") {
-        this.attrList = data.attrs.map(item => ({ value: item }));
-      }
-      this.form = { ...data };
+      this.editDefaultImg = data.img
+      this.form = {...data}
     },
     onSubmit() {
       this.$refs.form.validate(valid => {

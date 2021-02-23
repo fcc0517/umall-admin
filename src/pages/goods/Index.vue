@@ -2,7 +2,7 @@
 <div>
 <el-button type="primary" plain size="small" @click="showAddForm">添加商品</el-button>
 <u-form ref="form"/>
-<u-list @edit="showEditForm"/>
+  <u-list @edit="showEditForm"/>
 </div>
 </template>
 
